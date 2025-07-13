@@ -11,3 +11,11 @@ two:
   description: MyText
   image_url: maapis.jpg
   price: 9.99
+
+ruby:
+  title: Programming Ruby 1.9
+  description:
+    A really cool ruby book
+  price:
+    49.95
+  image_url: maapis.jpg

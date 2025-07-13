@@ -403,6 +403,7 @@ The seller uses depot to maintain a list of products to sell, determine the orde
 #### Page flow
 
 ## Chapter 6
+Creating the Application
 `rails new depot --css tailwind`
 `cd depot`
 `rails g scaffold Product title:string description:text image_url:string price:decimal`
@@ -410,4 +411,26 @@ The seller uses depot to maintain a list of products to sell, determine the orde
 `rails s -b 0.0.0.0 -p 3000`
 
 `rails db:seed`
+`rails assets:precompile`
+needed to make the tailwind styles show #TODO check out why
+`rails test`
+I needed to edit the fixture file to be a valid image file in the assets folder
 
+## Chapter 7
+Validation and unit testing
+
+models are where validation goes for what can enter the database
+we can find our model test in `/test/models/product_test.rb`
+these are minitest models
+# test fixtures
+fixtures contain entries for rows we want to insert into the database for tests
+they go in the `work/depot/test/fixtures/products.yml` file
+must use spaces and not tabs in yaml
+- imagetag is a helper that produces a <img> element
+- using the fixtures directive in the models test file will cause the table to be emptied out and only populated with the fixture data for the test
+- default is to load all fixtures before running a test
+- change to the test database using ite `config/database.yml`
+- each test method gets a freshly initialized table in the test database loaded from the fixtures
+done automatically with the `rails test` command but can be done separately with `rails db:test:prepare`
+
+-inside the tests we can load the data using the row name from the fixture
