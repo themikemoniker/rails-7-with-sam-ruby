@@ -336,11 +336,78 @@ rescue clauses can be directly put on the outermost level of a method definition
 
 
 ### Organizing Structures
+Rails has 2 basic comcpets for organizing methods
 #### Classes
+Class definitions start with `class` keyword followed by Uppercsae Class name
+Rails makes heavy use of Class-level delarations
+When defining methods on the class use `def self.func_name` this makes it a class method
+Objects hold their state in instance variables
+instance variables arent directly accessible outside the class, to access them externally we create getters and setters
+Getters and setters can be generated using convenience methods
+```ruby
+class Greeter
+  attr_accessor :name     # create reader and writer methods
+  attr_reader   :greeting # create reader only
+  attr_writer   :age      # create writer only
+```
+instance methods are public by default put can be restricted with the `protected` or `private` directives
+protected mehtods can be called both in the same instance and by other instances of the same class or its subclasses
+private is the strictest, it can only be called within the same instance
+
 #### Modules
+modules serve two purposes:
+they serve as a namespace -- preventing names from clashing
+they allow you to share functionality among classes using mixins.
+If a class mixes in a module, that module's methods become available as though they had been defined in the class
+Rails automatically mixes helper modules into the appropriate view template
 #### YAML
+indentation is important
+used for configuration files for databases, test data, translations
 
 ### Marshaling Objects
+ruby can take an object and convert it into a stream of bytes that can be stored outside the app
+some things such as anonymous classes or modules cant be dumped and will raise a Type Error
+When you load a marshaled object, ruby needs to know the definition of the class of that object
+
+use the model declaration in your controller to list all models that are marshaled, this preemptively loads the necessary classes to make marshaling work properly.
 ### Pulling it All Together
+example showing a class with a table
 ### Ruby Idioms
+
+```ruby
+empty! # bang methods do something descrutive to the receiver
+empty? # predictive returns true or false based on condition
+
+a||b # expression returns a or b
+count ||= 0 # same as count = count || 0
+
+obj = self.new # class methods sometimes need to create an instance of that class
+  # use self.new so that subclasses will create their type instead of the parent type
+
+lambda # convers a block into an object of type `Proc`, can also use `->`
+
+require File.expand_path('../../relative/path/from/current/file', _FILE_)
+```
+
+# Part 2 Building an Application
+## Chapter 5
+### The Depot Application
+web-based shopping cart application
+shows how to create maintenance pages, link database tables, handle sessionsm create forms, and wrangle modern JS
+12 chapters including unit testing, system testing, security and page layout
+### What Depot Does
+#### Use cases
+2 roles: the buyer and the seller
+The buyer uses Depot to browse the products we have to sell, select some to purchase, supply information to create an order
+The seller uses depot to maintain a list of products to sell, determine the orders that are awaiting shipment, mark orders as shipped
+#### Page flow
+
+## Chapter 6
+`rails new depot --css tailwind`
+`cd depot`
+`rails g scaffold Product title:string description:text image_url:string price:decimal`
+`rails db:migrate`
+`rails s -b 0.0.0.0 -p 3000`
+
+`rails db:seed`
 

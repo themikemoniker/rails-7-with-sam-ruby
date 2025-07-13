@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   end
 
   # Set up port forwarding from guest to host
-  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 3000, host: 3001
 
   # Mount the current directory to ~/from-host inside the VM
   config.vm.synced_folder ".", "/home/vagrant/from-host"
