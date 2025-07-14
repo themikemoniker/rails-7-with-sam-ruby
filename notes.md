@@ -442,3 +442,8 @@ Catalog Display
 We need tp start working on the buyer's perspective
 we also want to add some funtional tests for the controller
 
+functional tests are in `work/depot/test/controllers/store_controller_test.rb` , here we an assert specific values on the page based on data from our fixtures using `assert_select`
+
+### Iteratiion C5: Caching of Partial Results
+`rails dev:cache` is used to modify the configuration for the dev environment to turn on caching
+we use `<% cache ...` to mark the parts of the template that need to update if data changes
