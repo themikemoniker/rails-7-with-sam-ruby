@@ -434,3 +434,11 @@ must use spaces and not tabs in yaml
 done automatically with the `rails test` command but can be done separately with `rails db:test:prepare`
 
 -inside the tests we can load the data using the row name from the fixture
+
+we changed the controller tests to give unique dates now that is one of our validations
+
+## Chapter 8
+Catalog Display
+We need tp start working on the buyer's perspective
+we also want to add some funtional tests for the controller
+
