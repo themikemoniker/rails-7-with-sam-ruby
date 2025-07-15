@@ -479,4 +479,11 @@ we call this hook before destroying an instance
 we have direct access to the errors object similar to the validates method
 
 we also can add a test to ensure that a product that is currently in a cart cant be deleted `controllers/products_controller_test.rb`
+### Iteration D3: Adding a button
+to add a product to the cart we need to call the create action of the line_item controller
+in the template we can do this with the button_to method
+params object holds all the parameters passed in a browser request
+
+we use @cart.line_items.build to create the line item relationship, this can be done from either side.
+
 
