@@ -447,3 +447,36 @@ functional tests are in `work/depot/test/controllers/store_controller_test.rb` ,
 ### Iteratiion C5: Caching of Partial Results
 `rails dev:cache` is used to modify the configuration for the dev environment to turn on caching
 we use `<% cache ...` to mark the parts of the template that need to update if data changes
+russian doll caching -- because can be nested indefinately
+
+## Chapter 9
+### Task D: Cart Creationion
+Includes sessions, relationships among models, adding a button etc
+`rails​​ ​​generate​​ ​​scaffold​​ ​​Cart​`
+`rails db:migrate`
+We placed the module in the concerns and the controllers have access to those concerns
+`rails​​ ​​generate​​ ​​scaffold​​ ​​LineItem​​ ​​product:references​​ ​​cart:belongs_to​`
+`rails db:migrate`
+`belongs_to` is in the models and outlines a foreign key relationship
+since there can't be a line item without a corresponding cart and product
+belong to allows us to retrieve a product from a line item
+```ruby
+li = LineItem.find(...)
+puts "This line item is for #{li.product.title}"
+```
+
+`has_many` allows us to go from the cart to the line_items
+`has_many :line_items, dependent: :destroy`
+the destroy bit means that if we destroy a cart, we destroy all of it's line items too
+we can now reference (a collection of) line items from a cart object
+```ruby
+cart = Cart.find(...)
+puts "This cart has #{cart.line_items.count} line items"
+```
+we need to add a has_many to products too, but we should not be so destructive when deleting a product
+we dfiend a hook method. A hook method is a method is a method that Rails calls automatically calls at a point in an object's lifecycle
+we call this hook before destroying an instance
+we have direct access to the errors object similar to the validates method
+
+we also can add a test to ensure that a product that is currently in a cart cant be deleted `controllers/products_controller_test.rb`
+
