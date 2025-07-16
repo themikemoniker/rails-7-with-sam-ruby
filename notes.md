@@ -486,4 +486,24 @@ params object holds all the parameters passed in a browser request
 
 we use @cart.line_items.build to create the line item relationship, this can be done from either side.
 
+## Chapter 10
+we need to add be able to add multiples to cart, handle errors, communicate problems
+### E1: Creating a smarter cart
+`rails generate migration add_quantity_to_line_items quantity:integer`
+AddXXXToTable or RemoveXXXFromTable with the column names and types after the migration
+`rails g migration combine_items_in_cart`
+### E2: Handling Errors
+take two actions when a cart is not found by id
+1. log the fact to an internal log file using the logger
+2. redisplay the catalog page along with "invalid cart" message
+a flash is a bucket in which you store stuff as you process a request
+contents are available to the next request in this session
+flash is used to collect error messages
+we don't store in an instance variable because the instance variables from previous request are long gone
+flash is stored in the session to make it available between requests
+
+we can add a rescue in the cart controller
+### E3: Finishing the cart
+add a button to the cart view
+edit the cart destroy action in the controller
 
