@@ -507,3 +507,15 @@ we can add a rescue in the cart controller
 add a button to the cart view
 edit the cart destroy action in the controller
 
+## Chapter 11
+### Task F: Hotwiring the store frontend
+you build html fragmetns or partials and send the result to the client
+lets hotwire the shopping cart in the sidebar without redisplaying the page
+### Iteration F1: Moving the cart
+currnetly rendered by CartController#show
+we will now render it in the layout that displays the overall catalog
+#### Partial Templates
+a partial is a chunk of a view in its own file
+you can render a partial from another template or from a controller
+
+
