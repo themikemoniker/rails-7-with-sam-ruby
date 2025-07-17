@@ -517,5 +517,5 @@ we will now render it in the layout that displays the overall catalog
 #### Partial Templates
 a partial is a chunk of a view in its own file
 you can render a partial from another template or from a controller
-
-
+if the catalog is large the redisplay might take a while, it uses server resources, because the whole page is redisplayed. We can use Turbo to make this better.
+### Iteration F2: Creating a hotwired cart
