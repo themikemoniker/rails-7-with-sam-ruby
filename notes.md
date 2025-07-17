@@ -519,3 +519,11 @@ a partial is a chunk of a view in its own file
 you can render a partial from another template or from a controller
 if the catalog is large the redisplay might take a while, it uses server resources, because the whole page is redisplayed. We can use Turbo to make this better.
 ### Iteration F2: Creating a hotwired cart
+turbo is one of the hotwire frameworks, HOTwire is HTML Over The Wire
+turbo allows us to write code in the browser that interacts with our server based application.
+We'd like to make the add to cart buttons invoke the server create action on the lineitems controller
+the server can send down just the html for the care and we can replace it in the DOM
+note: has fallback to just send htmo instead of turbo stream if js is disabled
+we need a partial for every area of the screen that we wish to dynamically update
+and the partial needs to contain a unique html ID
+### Iteration F3: Hilighting Changes
